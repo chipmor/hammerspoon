@@ -3,7 +3,6 @@
 ---------------------
 require('reloadConfig')
 ---------------------
---Screen Shit
+-- System Hotkeys
 ---------------------
 require('hotkeys')
-
