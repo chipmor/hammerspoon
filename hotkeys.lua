@@ -1,28 +1,28 @@
 local M = {}
-local superKey =  {"⌘", "⌥", "⌃"}
+local superKey = {'⌘', '⌥', '⌃'}
 M.superKey = superKey
 
 --[[ window management ]]
 local windowHalf = hs.loadSpoon('WindowHalfsAndThirds')
 
 windowHalf:bindHotkeys({
-    left_half = {superKey, "Left"},
-    right_half = {superKey, "Right"},
+    left_half = {superKey, 'Left'},
+    right_half = {superKey, 'Right'},
+    max = {superKey, '='},
+    min = {superKey, '-'}
 })
 
 hs.hotkey.bind(superKey, 'm', function()
     hs.window.focusedWindow():minimize()
 end)
 
-
 --[[ spotify ]]
-hs.hotkey.bind(superKey, "s", function()
+hs.hotkey.bind(superKey, 's', function()
     local track = hs.spotify.getCurrentTrack()
     local artist = hs.spotify.getCurrentArtist()
     local album = hs.spotify.getCurrentAlbum()
-    hs.alert.show(track ..'\n' .. artist .. '\n' .. album)
+    hs.alert.show(track .. '\n' .. artist .. '\n' .. album)
 end)
-
 
 --[[ copy pasta ]]
 hs.loadSpoon('ClipboardTool')
