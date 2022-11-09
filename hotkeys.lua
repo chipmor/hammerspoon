@@ -1,20 +1,30 @@
 local M = {}
+hs.loadSpoon('utils')
+local utils = spoon.utils
+
+
 local superKey = {'⌘', '⌥', '⌃'}
 M.superKey = superKey
-
 --[[ window management ]]
+-- hs.spoons.useSpoon('WindowHalfsAndThirds',{
+--     hotkeys={
+--         left_half = {superKey, 'Left'},
+--         right_half = {superKey, 'Right'},
+--         max = {superKey, '='},
+--         min = {superKey, '-'}
+--     },
+
+-- })
 local windowHalf = hs.loadSpoon('WindowHalfsAndThirds')
 
 windowHalf:bindHotkeys({
     left_half = {superKey, 'Left'},
     right_half = {superKey, 'Right'},
-    max = {superKey, '='},
-    min = {superKey, '-'}
+    larger = {superKey, '='},
+    smaller = {superKey, '-'},
+    max = {superKey, '/'}
 })
 
-hs.hotkey.bind(superKey, 'm', function()
-    hs.window.focusedWindow():minimize()
-end)
 
 --[[ spotify ]]
 hs.hotkey.bind(superKey, 's', function()
@@ -24,25 +34,20 @@ hs.hotkey.bind(superKey, 's', function()
     hs.alert.show(track .. '\n' .. artist .. '\n' .. album)
 end)
 
+
 --[[ copy pasta ]]
 hs.loadSpoon('ClipboardTool')
 
-clipboard = spoon.ClipboardTool
+Clipboard = spoon.ClipboardTool
 
-clipboard:start()
-clipboard.hist_size = 10
-clipboard.paste_on_select = true
+Clipboard:start()
+Clipboard.hist_size = 10
+Clipboard.paste_on_select = true
 
-hs.hotkey.bind(superKey, "v", 
-    function() 
-        clipboard:toggleClipboard() 
-    end
-)
+hs.hotkey.bind(superKey, 'v', function()
+    Clipboard:toggleClipboard()
+end)
 
-hs.hotkey.bind(superKey, hs.keycodes.map.delete, 
-    function() 
-        clipboard:clearAll() 
-    end
-)
+
 
 return M

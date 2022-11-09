@@ -7,7 +7,24 @@
         - spoon = spoon.<spoonName>
 -->
 
-2. hotkey binding
+2. Info
+<!--
+`hs` is a module (library)
+    -has objects to interact with (hs.alert)
+
+Print docs to console
+print(hs.doc.help("hs.alert"))
+
+print(hs.doc.hs.alert)
+
+local doc = hs.doc
+print(doc)
+print(doc.lua)
+print(doc.hs)
+print(doc.spoon)
+-->
+
+3. hotkey binding
 <!--
 hs.hotkey.bind(superKey, "<key>",
     function()
@@ -16,7 +33,7 @@ hs.hotkey.bind(superKey, "<key>",
 )
 -->
 
-3. Lua Syntax
+4. Lua Syntax
 <!-- 
 Loops:
 
@@ -24,6 +41,13 @@ while( true )
 do
 print("This loop will run forever.")
 end
+
+for i = 96, 122 do
+print(string.char(i))
+end
+
+for k,v in pairs(t) do body end
+will iterate over all key–value pairs of table t.
 
 Conditionals:
 
@@ -43,4 +67,33 @@ function <function_name>( arg1, arg2)
     return
 
 end
--->
+--> 5. Debugging
+
+<!--
+Print Stuff
+hs.inspect(variable)
+hs.inspect.inspect(variable[, options])
+hs.inspect.inspect(variable, {
+    depth={3},
+
+})
+
+ -->
+
+6. Links
+
+<!--
+Docs:
+-
+- https://www.hammerspoon.org/docs/hs
+- http://www.lua.org/manual/5.3/contents.html#index
+-
+
+URLS:
+    - Lua Quickstart:
+        - https://learnxinyminutes.com/docs/lua/
+    - Example Repos:
+        - https://github.com/peterklijn/hammerspoon-shiftit#step-3
+
+
+ -->
